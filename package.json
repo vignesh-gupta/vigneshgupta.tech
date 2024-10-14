@@ -24,7 +24,7 @@
     "autoprefixer": "10.4.20",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
-    "next": "^14.2.13",
+    "next": "^14.2.15",
     "next-sanity": "^9.4.7",
     "next-themes": "^0.3.0",
     "react": "18.3.1",
