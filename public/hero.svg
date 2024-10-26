@@ -1,0 +1,16 @@
+<svg width="540" height="540" viewBox="0 0 540 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_941_7325" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="540" height="540">
+<circle cx="270" cy="270" r="270" fill="#0D0D0D"/>
+</mask>
+<g mask="url(#mask0_941_7325)">
+<circle cx="270" cy="270" r="270" fill="#0D0D0D"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M270 86C190.471 86 126 150.471 126 230V414C126 422.837 147.49 430 174 430C200.51 430 222 422.837 222 414H222.001C222.001 422.837 243.491 430 270.001 430C296.421 430 317.856 422.885 318 414.089C318.144 422.885 339.579 430 365.999 430C392.509 430 413.999 422.837 413.999 414H414V230C414 150.471 349.529 86 270 86Z" fill="#D9D9D9" fill-opacity="0.1"/>
+<circle cx="270" cy="270" r="270" transform="matrix(-1 0 0 1 540 0)" fill="url(#paint0_radial_941_7325)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_941_7325" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(296.5 197) rotate(93.7483) scale(405.367 199.923)">
+<stop stop-color="#0D0D0D" stop-opacity="0"/>
+<stop offset="1" stop-color="#0D0D0D"/>
+</radialGradient>
+</defs>
+</svg>
