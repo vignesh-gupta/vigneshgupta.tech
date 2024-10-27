@@ -6,7 +6,7 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
 const ProjectCard = () => {
   return (
-    <Card className="w-full overflow-hidden rounded-3xl border-[1px] transition duration-300 dark:hover:border-muted/40 lg:h-[500px] p-6 pr-0 lg:p-12 lg:pe-0 relative group">
+    <Card className="w-full overflow-hidden border-[1px] transition duration-300 dark:hover:border-muted/40 lg:h-[500px] p-6 pr-0 lg:p-12 lg:pe-0 relative group">
       <div className="lg:w-1/2 flex flex-col h-full">
         <Image
           src="/project-icon.svg"
