@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-
-import { ThemeProvider } from "@/components/theme/theme-provider";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { ThemeSwitch } from "@/components/theme/theme-switch";
+import HeroGradient from "@/components/hero/hero-gradient";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,14 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`antialiased `}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <ThemeSwitch className="fixed bottom-10 left-10" />
+          <HeroGradient />
           {children}
         </ThemeProvider>
       </body>

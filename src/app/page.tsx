@@ -1,9 +1,12 @@
-import Image from "next/image";
+import HeroSection from "@/components/hero";
+import React from "react";
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <div>
-      <Image src="/hero.svg" alt="hero" width={500} height={500} />
+    <div className="container px-8 overflow-x-hidden pt-24 max-w-screen-lg mx-auto">
+      <HeroSection />
     </div>
   );
-}
+};
+
+export default HomePage;
