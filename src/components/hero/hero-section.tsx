@@ -9,7 +9,7 @@ const HeroSection = () => {
           <span className="text-lg md:text-xl lg:text-2xl text-muted font-semibold">
             Hey there 👋
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-muted">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-muted">
             I&apos;m <span className="text-primary">Vignesh Gupta</span>
           </h1>
         </div>
@@ -28,7 +28,7 @@ const HeroSection = () => {
           </Link>
           <Link
             href={"/"}
-            className="cursor-pointer rounded-lg flex justify-center items-center bg-card min-h-[60px] px-8 py-4  hover:translate-y-[-1px] dark:text-muted text-white hover:text-white active:translate-y-[1px] font-medium transition duration-300 w-full lg:w-fit"
+            className="cursor-pointer rounded-lg flex justify-center items-center bg-onyx min-h-[60px] px-8 py-4  hover:translate-y-[-1px] dark:text-muted text-white hover:text-white active:translate-y-[1px] font-medium transition duration-300 w-full lg:w-fit"
           >
             Get in touch
           </Link>
