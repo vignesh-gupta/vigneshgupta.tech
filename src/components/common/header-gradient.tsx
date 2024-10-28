@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const HeroGradient = () => {
+const HeaderGradient = () => {
   return (
     <div className="absolute inset-x-0 top-0 select-none">
       <div className="relative h-[550px] w-full overflow-x-hidden">
@@ -12,4 +12,4 @@ const HeroGradient = () => {
   );
 };
 
-export default HeroGradient;
+export default HeaderGradient;

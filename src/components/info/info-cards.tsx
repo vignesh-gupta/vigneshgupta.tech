@@ -20,7 +20,7 @@ const InfoCards = ({
   return (
     <Card
       className={cn(
-        "w-full overflow-hidden  transition duration-300 pt-12 group flex items-center flex-col gap-y-2",
+        "w-full overflow-hidden  transition duration-300 pt-12 group flex items-center flex-col gap-y-2 aspect-square",
         className
       )}
     >
@@ -31,7 +31,7 @@ const InfoCards = ({
         alt={title}
         width={size ?? 504}
         height={size ?? 365}
-        className="flex-1 w-auto mt-8"
+        className="flex-1 object-contain w-auto mt-8"
       />
     </Card>
   );

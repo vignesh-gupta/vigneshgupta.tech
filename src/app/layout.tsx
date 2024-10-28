@@ -4,7 +4,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeSwitch } from "@/components/theme/theme-switch";
-import HeroGradient from "@/components/hero/hero-gradient";
+import HeaderGradient from "@/components/common/header-gradient";
+import Footer from "@/components/common/footer";
+import FooterGradient from "@/components/common/footer-gradient";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`antialiased pb-2 ${inter.className}`}>
+      <body className={`antialiased relative ${inter.className}`}>
+        <HeaderGradient />
         <ThemeProvider attribute="class" defaultTheme="dark">
           <ThemeSwitch className="fixed bottom-10 left-10" />
-          <HeroGradient />
           {children}
+          <Footer />
         </ThemeProvider>
+        <FooterGradient />
       </body>
     </html>
   );
