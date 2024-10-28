@@ -34,7 +34,7 @@ const HeroSection = () => {
           </Link>
         </div>
       </div>
-      <div className="hidden h-full lg:block">
+      <div className="hidden h-full lg:block -z-50">
         <HeroImage />
       </div>
     </section>

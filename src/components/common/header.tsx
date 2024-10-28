@@ -1,6 +1,7 @@
 import { navLinks, socials } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
+import MobileNav from "./mobile-nav";
 
 const Header = () => {
   return (
@@ -50,6 +51,7 @@ const Header = () => {
           </div>
         </div>
       </header>
+      <MobileNav />
     </>
   );
 };
