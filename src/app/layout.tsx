@@ -7,6 +7,7 @@ import { ThemeSwitch } from "@/components/theme/theme-switch";
 import HeaderGradient from "@/components/common/header-gradient";
 import Footer from "@/components/common/footer";
 import FooterGradient from "@/components/common/footer-gradient";
+import Header from "@/components/common/header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={`antialiased relative ${inter.className}`}>
         <HeaderGradient />
         <ThemeProvider attribute="class" defaultTheme="dark">
+          <Header />
           <ThemeSwitch className="fixed bottom-10 left-10" />
           {children}
           <Footer />

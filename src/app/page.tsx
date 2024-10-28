@@ -32,7 +32,7 @@ const info: InfoCardsProps[] = [
 
 const HomePage = () => {
   return (
-    <main className="container max-w-screen-lg px-8 pt-24 mx-auto space-y-20">
+    <main className="container max-w-screen-lg px-8 pt-16 mx-auto space-y-20">
       <HeroSection />
       <ProjectSection showHeader />
 
