@@ -32,7 +32,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider>
             <Header />
-            <ThemeSwitch className="fixed bottom-10 left-10" />
+            <ThemeSwitch className="fixed bottom-10 left-10 z-10" />
             {children}
             <Footer />
           </TooltipProvider>

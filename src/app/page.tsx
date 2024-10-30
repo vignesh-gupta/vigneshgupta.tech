@@ -5,6 +5,7 @@ import InfoCards, { InfoCardsProps } from "@/components/info/info-cards";
 import ProjectSection from "@/components/project/project-section";
 import { Button } from "@/components/ui/button";
 import { SendHorizontal } from "lucide-react";
+import PageContainer from "@/components/common/page-container";
 
 const info: InfoCardsProps[] = [
   {
@@ -32,7 +33,7 @@ const info: InfoCardsProps[] = [
 
 const HomePage = () => {
   return (
-    <main className="container max-w-screen-lg px-8 pt-16 mx-auto space-y-20">
+    <PageContainer>
       <HeroSection />
       <ProjectSection showHeader />
 
@@ -67,7 +68,7 @@ const HomePage = () => {
           </Link>
         </Button>
       </section>
-    </main>
+    </PageContainer>
   );
 };
 

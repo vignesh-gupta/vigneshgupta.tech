@@ -1,6 +1,6 @@
 import { navLinks, socials } from "@/lib/constants";
-import Image from "next/image";
 import Link from "next/link";
+import Logo from "./logo";
 import MobileNav from "./mobile-nav";
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
         <div className="container mx-auto flex h-16 w-full max-w-[1024px] items-center justify-between rounded-full border-[1px] border-white/25 bg-white/25 px-8 backdrop-blur-md dark:border-[#5E5E5E]/20 dark:bg-[#18181D]/30">
           <div className="flex items-center gap-10">
             <Link aria-label="Vignesh Gupta Logo" href="/">
-              <Image src="/logo.svg" width={50} height={50} alt="Logo" />
+              <Logo width={50} height={50} />
             </Link>
             <nav
               aria-label="Main"
