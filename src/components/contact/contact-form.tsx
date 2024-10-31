@@ -1,8 +1,16 @@
 "use client";
 
+import { FormEvent } from "react";
 import { Button } from "../ui/button";
 
 const ContactForm = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
+  };
+
   return (
     <div className="relative min-h-[565px] overflow-hidden rounded-2xl border-[1px] bg-muted/10 pb-3">
       <div className="relative flex flex-col items-center justify-center py-4">
@@ -17,7 +25,7 @@ const ContactForm = () => {
         <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
       </div>
 
-      <form className="mb-4 px-6">
+      <form onSubmit={handleSubmit} className="mb-4 px-6">
         <label htmlFor="email" className="my-4 flex items-center gap-2">
           <span className="font-medium text-onyx dark:text-white">Email:</span>
           <input
@@ -34,7 +42,6 @@ const ContactForm = () => {
         <label htmlFor="name" className="my-4 flex items-center gap-2">
           <span className="font-medium text-onyx dark:text-white">Name:</span>
           <input
-            type="name"
             className="flex-1 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
             placeholder="Enter your name"
             id="name"
@@ -49,7 +56,6 @@ const ContactForm = () => {
             Subject:
           </span>
           <input
-            type="subject"
             className="flex-1 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
             placeholder="Enter subject"
             id="subject"

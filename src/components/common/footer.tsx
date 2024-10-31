@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className=" container mx-auto px-5 relative mt-16 min-h-[326px] pb-32 md:pb-12 z-0">
       <div className="h-[1px] w-full bg-black/10 dark:bg-white/10"></div>
       <div className="container mx-auto relative z-10 mt-20 flex w-full max-w-5xl flex-col items-start justify-between gap-12 md:h-[236px] md:flex-row">
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between h-full w-full">
           <div className="flex flex-col ">
             <Logo width={150} height={150} />
             <p className="mt-4 text-onyx/60 dark:text-white/40">

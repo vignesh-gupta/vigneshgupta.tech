@@ -51,7 +51,11 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Link href="/" aria-label="Vignesh Gupta Logo" className="fixed top-0 left-0 right-0 pt-5">
+      <Link
+        href="/"
+        aria-label="Vignesh Gupta Logo"
+        className="relative top-5 left-0 right-0"
+      >
         <Logo
           width={50}
           height={50}
