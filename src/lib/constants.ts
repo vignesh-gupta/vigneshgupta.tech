@@ -19,6 +19,6 @@ export const socials = [
 export const navLinks = [
   { name: "About", href: "/about", Icon: CircleUserRound },
   { name: "Work", href: "/work", Icon: BriefcaseBusiness },
-  { name: "Notebook", href: "/notebook", Icon: Pencil },
+  // { name: "Notebook", href: "/notebook", Icon: Pencil },
   { name: "Contact", href: "/contact", Icon: Mail },
 ];
