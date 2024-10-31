@@ -12,7 +12,7 @@ const MobileNav = () => {
             <Logo width={50} height={50} />
           </Link>
           <nav className="relative flex justify-center flex-1">
-            <ul className="m-0 flex list-none items-center gap-5 sm:gap-10 rounded-[6px] p-1 justify-evenly shrink">
+            <ul className="m-0 flex list-none items-center gap-5 sm:gap-10 rounded-[6px] p-1 justify-evenly shrink flex-1">
               {navLinks.map((link) => (
                 <li key={`nav-link-${link.name}`}>
                   <Tooltip delayDuration={100}>
@@ -33,7 +33,7 @@ const MobileNav = () => {
             </ul>
           </nav>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="hidden items-center gap-4 sm:flex">
           <div className="flex gap-6 text-onyx/70 dark:text-white/70">
             {socials.map((social) => (
               <Link

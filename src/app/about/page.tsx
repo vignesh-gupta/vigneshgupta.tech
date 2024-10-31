@@ -1,20 +1,13 @@
-import PageContainer from "@/components/common/page-container";
+import PageContainer from "@/components/page/page-container";
 import GetInTouch from "@/components/get-in-touch";
 import Image from "next/image";
 import Link from "next/link";
+import PageHeader from "@/components/page/page-header";
 
 const AboutPage = () => {
   return (
     <>
-      <div className="py-16 pt-32 container max-w-[1024px] mx-auto">
-        <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl text-primary">
-          A little bit about me
-        </h1>
-        <p className="mb-16 mt-4 text-base text-muted/60 md:text-2xl">
-          Who I am and what I do.
-        </p>
-      </div>
-      <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+      <PageHeader title="A little bit about me" subtitle="Who I am and what I do." />
       <PageContainer>
         <div className="grid w-full grid-cols-1 md:grid-cols-12">
           <div className="col-span-12 flex flex-col gap-12 md:col-span-8 md:pr-12 text-pretty">

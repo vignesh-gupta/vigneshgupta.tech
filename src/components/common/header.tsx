@@ -51,6 +51,13 @@ const Header = () => {
           </div>
         </div>
       </header>
+      <Link href="/" aria-label="Vignesh Gupta Logo" className="fixed top-0 left-0 right-0 pt-5">
+        <Logo
+          width={50}
+          height={50}
+          className="block mx-auto md:hidden opacity-60"
+        />
+      </Link>
       <MobileNav />
     </>
   );
