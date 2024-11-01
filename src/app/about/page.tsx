@@ -7,7 +7,10 @@ import PageHeader from "@/components/page/page-header";
 const AboutPage = () => {
   return (
     <>
-      <PageHeader title="A little bit about me" subtitle="Who I am and what I do." />
+      <PageHeader
+        title="A little bit about me"
+        subtitle="Who I am and what I do."
+      />
       <PageContainer>
         <div className="grid w-full grid-cols-1 md:grid-cols-12">
           <div className="col-span-12 flex flex-col gap-12 md:col-span-8 md:pr-12 text-pretty">
@@ -37,6 +40,16 @@ const AboutPage = () => {
                 collaboration and empowers businesses to streamline their
                 processes. I thrive on tackling complex challenges and
                 delivering solutions that create a tangible impact.
+              </p>
+              <p className="text-[18px] leading-[160%] text-muted">
+                Checkout my{" "}
+                <Link
+                  href="/uses"
+                  className="cursor-pointer rounded-lg justify-center items-center inline-flex font-medium transition text-onyx underline underline-offset-4 dark:text-white"
+                >
+                  tech & tools
+                </Link>
+                .
               </p>
             </div>
             <div className="flex flex-col gap-2">
