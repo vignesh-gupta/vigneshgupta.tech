@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, CircleUserRound, Mail, Pencil } from "lucide-react";
+import { BriefcaseBusiness, CircleUserRound, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -22,3 +22,5 @@ export const navLinks = [
   // { name: "Notebook", href: "/notebook", Icon: Pencil },
   { name: "Contact", href: "/contact", Icon: Mail },
 ];
+
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "vighneshgupta32@gmail.com";

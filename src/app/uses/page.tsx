@@ -1,7 +1,13 @@
+import { Metadata } from "next";
+
 import PageContainer from "@/components/page/page-container";
 import PageHeader from "@/components/page/page-header";
 import UsesCard from "@/components/uses/uses-card";
-import React from "react";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = constructMetadata({
+  preTitle: "Tech Stack | ",
+});
 
 const UsesPage = () => {
   return (

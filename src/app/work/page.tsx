@@ -5,6 +5,13 @@ import PageContainer from "@/components/page/page-container";
 import PageHeader from "@/components/page/page-header";
 import ProjectCard from "@/components/project/project-card";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Metadata } from "next";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = constructMetadata({
+  preTitle: "Work | ",
+});
+
 
 const WorkPage = () => {
   return (

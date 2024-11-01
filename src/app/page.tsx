@@ -6,6 +6,8 @@ import ProjectSection from "@/components/project/project-section";
 import { Button } from "@/components/ui/button";
 import { SendHorizontal } from "lucide-react";
 import PageContainer from "@/components/page/page-container";
+import { Metadata } from "next";
+import { constructMetadata } from "@/lib/metadata";
 
 const info: InfoCardsProps[] = [
   {
@@ -30,6 +32,10 @@ const info: InfoCardsProps[] = [
     image: "/stack.png",
   },
 ];
+
+export const metadata: Metadata = constructMetadata({
+  keywords: info.map((card) => card.title),
+});
 
 const HomePage = () => {
   return (

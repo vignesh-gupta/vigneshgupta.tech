@@ -1,6 +1,14 @@
+import { Metadata } from "next";
+
 import ContactForm from "@/components/contact/contact-form";
 import PageContainer from "@/components/page/page-container";
 import PageHeader from "@/components/page/page-header";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = constructMetadata({
+  preTitle: "Contact | ",
+});
+
 
 const ContactPage = () => {
   return (

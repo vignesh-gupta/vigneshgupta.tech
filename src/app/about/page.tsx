@@ -1,8 +1,15 @@
-import PageContainer from "@/components/page/page-container";
-import GetInTouch from "@/components/get-in-touch";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import GetInTouch from "@/components/get-in-touch";
+import PageContainer from "@/components/page/page-container";
 import PageHeader from "@/components/page/page-header";
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = constructMetadata({
+  preTitle: "About | ",
+});
 
 const AboutPage = () => {
   return (

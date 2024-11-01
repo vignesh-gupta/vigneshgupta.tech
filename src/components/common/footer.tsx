@@ -15,8 +15,14 @@ const Footer = () => {
             </p>
           </div>
           <p className="mt-10 text-sm text-onyx/60 dark:text-white/40 md:mt-0">
-            &copy; {new Date().getFullYear()} Vignesh Gupta. All Rights
-            Reserved.
+            Developed by Vignesh Gupta with this{" "}
+            <Link
+              href="https://www.figma.com/community/file/1266863403759514317"
+              prefetch={false}
+              className="underline underline-offset-2"
+            >
+              UI kit
+            </Link>
           </p>
         </div>
         <div className="grid  gap-16 -order-1 md:order-2 grid-cols-2 md:gap-20">
@@ -43,7 +49,10 @@ const Footer = () => {
             <p className="font-bold text-onyx dark:text-white">Elsewhere</p>
             <ul className="flex flex-col gap-4 text-muted">
               {socials.map((social) => (
-                <li key={`footer-socials-${social.name}`} className="flex items-center gap-2 group text-onyx/60 hover:text-onyx dark:text-muted dark:hover:text-white">
+                <li
+                  key={`footer-socials-${social.name}`}
+                  className="flex items-center gap-2 group text-onyx/60 hover:text-onyx dark:text-muted dark:hover:text-white"
+                >
                   <Link
                     className="transition-colors duration-150"
                     target="_blank"
