@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { ThemeSwitch } from "@/components/theme/theme-switch";
-import HeaderGradient from "@/components/common/header-gradient";
 import Footer from "@/components/common/footer";
 import FooterGradient from "@/components/common/footer-gradient";
 import Header from "@/components/common/header";
+import HeaderGradient from "@/components/common/header-gradient";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { ThemeSwitch } from "@/components/theme/theme-switch";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SanityLive } from "@/sanity/lib/live";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -38,6 +40,7 @@ export default function RootLayout({
           </TooltipProvider>
         </ThemeProvider>
         <FooterGradient />
+        <SanityLive />
       </body>
     </html>
   );
