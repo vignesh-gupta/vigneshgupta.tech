@@ -1,8 +1,10 @@
 import { defineField, defineType } from "sanity";
+import { ProjectsIcon } from "@sanity/icons"
 
 export const projectType = defineType({
   name: "project",
   title: "Project",
+  icon:ProjectsIcon,
   type: "document",
   fields: [
     defineField({
@@ -38,6 +40,7 @@ export const projectType = defineType({
       name: "isFeatured",
       title: "Is Featured",
       type: "boolean",
+      initialValue: false,
     }),
     defineField({
       name: "tags",
