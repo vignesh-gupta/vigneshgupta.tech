@@ -41,7 +41,7 @@ const HomePage = () => {
   return (
     <PageContainer>
       <HeroSection />
-      <ProjectSection showHeader />
+      <ProjectSection showHeader showFeatured />
 
       <section>
         <h2 className="text-3xl font-bold md:text-5xl">Get to know me</h2>

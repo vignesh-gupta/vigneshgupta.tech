@@ -802,6 +802,13 @@
           "type": "string"
         },
         "optional": true
+      },
+      "category2": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
       }
     }
   },

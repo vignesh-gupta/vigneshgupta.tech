@@ -12,7 +12,6 @@ export const projectType = defineType({
       title: "Title",
       type: "string",
     }),
-
     {
       name: "description",
       title: "Description",

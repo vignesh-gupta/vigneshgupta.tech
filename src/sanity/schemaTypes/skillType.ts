@@ -25,5 +25,10 @@ export const skillType = defineType({
       title: "Category",
       type: "string",
     }),
+    defineField({
+      name: "category2",
+      title: "Category2",
+      type: "string",
+    }),
   ],
 });

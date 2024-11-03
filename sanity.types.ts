@@ -140,6 +140,7 @@ export type Skill = {
     _type: "image";
   };
   category?: string;
+  category2?: string;
 };
 
 export type Project = {
@@ -228,18 +229,71 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: SKILLS_QUERY
-// Query: *[_type=="skill"]{  _id,category,name,"icon": icon.asset->url}
+// Query: *[_type=="skill"]{  _id,category,name,icon}
 export type SKILLS_QUERYResult = Array<{
   _id: string;
   category: string | null;
   name: string | null;
-  icon: string | null;
+  icon: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
+// Variable: FEATURED_PROJECTS_QUERY
+// Query: *[_type=="project" && isFeatured][0..2] |  order(_createdAt desc){  codeLink,description,_id,title,projectLink,imgUrl}
+export type FEATURED_PROJECTS_QUERYResult = Array<{
+  codeLink: string | null;
+  description: string | null;
+  _id: string;
+  title: string | null;
+  projectLink: string | null;
+  imgUrl: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
+// Variable: PROJECTS_QUERY
+// Query: *[_type=="project"] |  order(_createdAt desc){  codeLink,description,_id,title,projectLink,isFeatured,imgUrl}
+export type PROJECTS_QUERYResult = Array<{
+  codeLink: string | null;
+  description: string | null;
+  _id: string;
+  title: string | null;
+  projectLink: string | null;
+  isFeatured: boolean | null;
+  imgUrl: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type==\"skill\"]{\n  _id,category,name,\"icon\": icon.asset->url\n}": SKILLS_QUERYResult;
+    "*[_type==\"skill\"]{\n  _id,category,name,icon\n}": SKILLS_QUERYResult;
+    "*[_type==\"project\" && isFeatured][0..2] |  order(_createdAt desc){\n  codeLink,description,_id,title,projectLink,imgUrl\n}": FEATURED_PROJECTS_QUERYResult;
+    "*[_type==\"project\"] |  order(_createdAt desc){\n  codeLink,description,_id,title,projectLink,isFeatured,imgUrl\n}": PROJECTS_QUERYResult;
   }
 }

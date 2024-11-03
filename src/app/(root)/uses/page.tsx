@@ -32,7 +32,7 @@ const UsesPage = async () => {
                 name && (
                   <li key={_id}>
                     <UsesCard
-                      url={icon}
+                      url={`#`}
                       title={name}
                       image={icon}
                       category={category}
