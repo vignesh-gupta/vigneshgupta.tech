@@ -139,8 +139,9 @@ export type Skill = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  category?: string;
-  category2?: string;
+  category?: "Frontend" | "Backend" | "Tools" | "Apps";
+  use?: string;
+  link?: string;
 };
 
 export type Project = {
@@ -153,6 +154,17 @@ export type Project = {
   description?: string;
   projectLink?: string;
   codeLink?: string;
+  icon?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   imgUrl?: {
     asset?: {
       _ref: string;
@@ -229,10 +241,10 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: SKILLS_QUERY
-// Query: *[_type=="skill"]{  _id,category,name,icon}
+// Query: *[_type=="skill"] | order(_createdAt asc){  _id,category,name,icon, use, link}
 export type SKILLS_QUERYResult = Array<{
   _id: string;
-  category: string | null;
+  category: "Apps" | "Backend" | "Frontend" | "Tools" | null;
   name: string | null;
   icon: {
     asset?: {
@@ -245,9 +257,11 @@ export type SKILLS_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  use: string | null;
+  link: string | null;
 }>;
 // Variable: FEATURED_PROJECTS_QUERY
-// Query: *[_type=="project" && isFeatured][0..2] |  order(_createdAt desc){  codeLink,description,_id,title,projectLink,imgUrl}
+// Query: *[_type=="project" && isFeatured][0..2] | order(_createdAt desc){  codeLink,description,_id,title,projectLink,imgUrl,icon}
 export type FEATURED_PROJECTS_QUERYResult = Array<{
   codeLink: string | null;
   description: string | null;
@@ -265,9 +279,20 @@ export type FEATURED_PROJECTS_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  icon: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
 }>;
 // Variable: PROJECTS_QUERY
-// Query: *[_type=="project"] |  order(_createdAt desc){  codeLink,description,_id,title,projectLink,isFeatured,imgUrl}
+// Query: *[_type=="project"] | order(_createdAt desc){  codeLink,description,_id,title,projectLink,isFeatured,imgUrl,icon}
 export type PROJECTS_QUERYResult = Array<{
   codeLink: string | null;
   description: string | null;
@@ -286,14 +311,25 @@ export type PROJECTS_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  icon: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type==\"skill\"]{\n  _id,category,name,icon\n}": SKILLS_QUERYResult;
-    "*[_type==\"project\" && isFeatured][0..2] |  order(_createdAt desc){\n  codeLink,description,_id,title,projectLink,imgUrl\n}": FEATURED_PROJECTS_QUERYResult;
-    "*[_type==\"project\"] |  order(_createdAt desc){\n  codeLink,description,_id,title,projectLink,isFeatured,imgUrl\n}": PROJECTS_QUERYResult;
+    "*[_type==\"skill\"] | order(_createdAt asc){\n  _id,category,name,icon, use, link\n}": SKILLS_QUERYResult;
+    "*[_type==\"project\" && isFeatured][0..2] | order(_createdAt desc){\n  codeLink,description,_id,title,projectLink,imgUrl,icon\n}": FEATURED_PROJECTS_QUERYResult;
+    "*[_type==\"project\"] | order(_createdAt desc){\n  codeLink,description,_id,title,projectLink,isFeatured,imgUrl,icon\n}": PROJECTS_QUERYResult;
   }
 }

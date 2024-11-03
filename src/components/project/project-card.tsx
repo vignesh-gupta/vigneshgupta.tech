@@ -11,6 +11,7 @@ type ProjectCardProps = {
   description: string;
   image: SanityImageSource;
   projectUrl: string;
+  icon: SanityImageSource | null;
 };
 
 const ProjectCard = ({
@@ -18,16 +19,20 @@ const ProjectCard = ({
   image,
   projectUrl,
   title,
+  icon,
 }: ProjectCardProps) => {
   return (
     <Card className="w-full overflow-hidden border-[1px] transition duration-300 dark:hover:border-muted/40 lg:h-[500px] p-6 pr-0 lg:p-12 lg:pe-0 relative group flex gap-5">
       <div className="lg:w-1/2 flex flex-col h-full">
-        <Image
-          src="/project-icon.svg"
-          alt="Project Name"
-          width={60}
-          height={60}
-        />
+        {icon ? (
+          <Image
+            src={urlFor(icon).url()}
+            blurDataURL={urlFor(icon).width(24).height(24).blur(10).url()}
+            alt="Project Name"
+            width={60}
+            height={60}
+          />
+        ) : null}
         <CardTitle className="my-5">{title}</CardTitle>
         <CardDescription className="text-base flex-1 text-pretty">
           {description}

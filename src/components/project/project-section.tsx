@@ -22,11 +22,12 @@ const ProjectSection = async ({
       )}
       <div className="flex flex-col items-center gap-y-8 mt-8">
         {projects.map(
-          ({ _id, codeLink, description, imgUrl, projectLink, title }) =>
+          ({ _id, codeLink, description, imgUrl, projectLink, title, icon }) =>
             _id && codeLink && description && imgUrl && projectLink && title ? (
               <ProjectCard
                 title={title}
                 image={imgUrl}
+                icon={icon}
                 projectUrl={projectLink}
                 description={description}
                 key={`project-card-${_id}}`}

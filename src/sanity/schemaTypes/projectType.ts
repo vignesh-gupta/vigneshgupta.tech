@@ -1,10 +1,10 @@
 import { defineField, defineType } from "sanity";
-import { ProjectsIcon } from "@sanity/icons"
+import { ProjectsIcon } from "@sanity/icons";
 
 export const projectType = defineType({
   name: "project",
   title: "Project",
-  icon:ProjectsIcon,
+  icon: ProjectsIcon,
   type: "document",
   fields: [
     defineField({
@@ -28,6 +28,14 @@ export const projectType = defineType({
       type: "string",
     }),
     defineField({
+      name: "icon",
+      title: "Icon",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: "imgUrl",
       title: "ImageUrl",
       type: "image",
@@ -46,6 +54,6 @@ export const projectType = defineType({
       title: "Tags",
       type: "array",
       of: [{ type: "string" }],
-    })
+    }),
   ],
 });

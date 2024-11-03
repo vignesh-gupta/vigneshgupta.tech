@@ -8,11 +8,11 @@ import { urlFor } from "@/sanity/lib/image";
 type UsesCardProps = {
   title: string;
   image: SanityImageSource;
-  category: string;
   url: string;
+  use: string;
 };
 
-const UsesCard = ({ category, image, title, url }: UsesCardProps) => {
+const UsesCard = ({ image, title, url, use }: UsesCardProps) => {
   return (
     <Link
       href={url}
@@ -35,7 +35,7 @@ const UsesCard = ({ category, image, title, url }: UsesCardProps) => {
           {title}
         </p>
         <Badge variant="outline" className="text-muted py-2 px-3">
-          {category}
+          {use}
         </Badge>
       </div>
     </Link>

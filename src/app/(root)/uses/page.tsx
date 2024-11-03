@@ -18,43 +18,36 @@ const UsesPage = async () => {
     <>
       <PageHeader
         title="Tech Stack"
-        subtitle="The dev tools, apps, and devices I use."
+        subtitle="The techs, dev tools, apps I have used."
       />
       <PageContainer>
         <section>
           <h2 className="text-3xl font-bold md:text-5xl">Dev & Design</h2>
           <ul className="my-5 grid grid-cols-1 gap-4 md:my-8 md:grid-cols-3">
-            {skills.map(
-              ({ _id, category, icon, name }) =>
-                _id &&
-                category &&
-                icon &&
-                name && (
-                  <li key={_id}>
-                    <UsesCard
-                      url={`#`}
-                      title={name}
-                      image={icon}
-                      category={category}
-                    />
-                  </li>
-                )
-            )}
-          </ul>
-        </section>
-        <section>
-          <h2 className="text-3xl font-bold md:text-5xl">Apps</h2>
-          <ul className="my-5 grid grid-cols-1 gap-4 md:my-8 md:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <li key={index}>
+            {skills.map(({ _id, category, icon, name, use, link }) => {
+              if (!category || !icon || !name || !use || !link) {
+                console.log({
+                  _id,
+                  category,
+                  icon,
+                  name,
+                  use,
+                  link,
+                });
+
+                return null;
+              }
+
+              return (
                 <UsesCard
-                  title="Discord"
-                  url="https://nextjs.org/"
-                  image="/discord.webp"
-                  category="Communication"
+                  key={_id}
+                  image={icon}
+                  title={name}
+                  url={link}
+                  use={use}
                 />
-              </li>
-            ))}
+              );
+            })}
           </ul>
         </section>
       </PageContainer>
