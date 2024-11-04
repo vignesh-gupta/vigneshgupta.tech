@@ -9,6 +9,7 @@ import { SKILLS_QUERY } from "@/sanity/lib/queries";
 
 export const metadata: Metadata = constructMetadata({
   preTitle: "Tech Stack | ",
+  image: "/open-graph/uses.jpg",
 });
 
 const UsesPage = async () => {

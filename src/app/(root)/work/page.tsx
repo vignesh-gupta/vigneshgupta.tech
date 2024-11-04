@@ -10,6 +10,7 @@ import { constructMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = constructMetadata({
   preTitle: "Work | ",
+  image: "/open-graph/work.jpg",
 });
 
 const WorkPage = () => {

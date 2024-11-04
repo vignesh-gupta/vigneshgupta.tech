@@ -7,6 +7,7 @@ import { constructMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = constructMetadata({
   preTitle: "Contact | ",
+  image: "/open-graph/contact.jpg",
 });
 
 
