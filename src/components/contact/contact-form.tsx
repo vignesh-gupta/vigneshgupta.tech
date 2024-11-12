@@ -46,6 +46,13 @@ const ContactForm = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
 
+    const data = {
+      service_id: "default_service",
+      template_id: "template_cpwkieu",
+      user_id: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+      template_params: values,
+    };
+
     const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
       method: "POST",
       headers: {
