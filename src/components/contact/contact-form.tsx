@@ -13,6 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -25,11 +26,8 @@ const formSchema = z.object({
 });
 
 const ContactForm = () => {
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,6 +38,13 @@ const ContactForm = () => {
       message: "",
     },
   });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+    router.push("?success=true");
+  }
 
   return (
     <div className="relative min-h-[565px] overflow-hidden rounded-2xl border-[1px] bg-muted/10 pb-3">
