@@ -1,6 +1,5 @@
 "use client";
 
-import emailJs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryState } from "nuqs";
 import { useForm } from "react-hook-form";
@@ -15,8 +14,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useState } from "react";
 import { Loader } from "lucide-react";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -46,16 +45,6 @@ const ContactForm = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    emailJs.init({
-      publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
-    });
-
-    const data = {
-      service_id: "default_service",
-      template_id: "template_cpwkieu",
-      user_id: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
-      template_params: values,
-    };
 
     const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
       method: "POST",
