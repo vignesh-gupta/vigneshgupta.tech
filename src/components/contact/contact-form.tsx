@@ -1,6 +1,8 @@
 "use client";
 
+import emailJs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryState } from "nuqs";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -13,7 +15,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Loader } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -26,8 +29,10 @@ const formSchema = z.object({
 });
 
 const ContactForm = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setMessage] = useQueryState("success");
 
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,11 +44,35 @@ const ContactForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    router.push("?success=true");
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    emailJs.init({
+      publicKey: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+    });
+
+    const data = {
+      service_id: "default_service",
+      template_id: "template_cpwkieu",
+      user_id: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+      template_params: values,
+    };
+
+    const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log({ values, res });
+
+    if (res.ok) {
+      setMessage("true");
+    } else {
+      setMessage("false");
+    }
+
+    setIsLoading(false);
   }
 
   return (
@@ -145,8 +174,15 @@ const ContactForm = () => {
           <Button
             className="ml-auto py-6 bg-gradient hover:bg-gradient primary-button dark:text-muted text-white dark:hover:text-white font-medium transition duration-300 w-full md:w-auto"
             size="lg"
+            disabled={isLoading}
           >
-            Send
+            {isLoading ? (
+              <>
+                <Loader className="w-6 h-6 mr-2 animate-spin" /> Sending
+              </>
+            ) : (
+              "Send"
+            )}
           </Button>
         </form>
       </Form>
