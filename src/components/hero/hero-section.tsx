@@ -1,5 +1,7 @@
 import Link from "next/link";
 import HeroImage from "./hero-image";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { calculateYearsFromNov2021 } from "@/lib/utils";
 
 const HeroSection = () => {
   return (
@@ -13,12 +15,22 @@ const HeroSection = () => {
             I&apos;m <span className="text-primary">Vignesh Gupta</span>
           </h1>
         </div>
-        <p className="text-lg md:text-xl text-muted text-pretty">
-          A Self-taught Developer, functioning in the industry for 2+ years now.
-          I&apos;m a passionate learner who&apos;s always willing to learn and
-          work across technologies and domains. I love to explore new
-          technologies and leverage them to solve real-life problems.
-        </p>
+        <div className="text-lg md:text-xl text-muted text-pretty">
+          <span>A Self-taught Developer, functioning in the industry for</span>
+          <Tooltip>
+            <TooltipTrigger className="border-dashed border-b border-muted/50 mx-1">
+              {calculateYearsFromNov2021()} years.
+            </TooltipTrigger>
+            <TooltipContent className="dark:bg-onyx font-semibold text-muted-foreground border-opacity-0 shadow-lg">
+              Since Nov 2021
+            </TooltipContent>
+          </Tooltip>
+          <span>
+            I&apos;m a passionate learner who&apos;s always willing to learn and
+            work across technologies and domains. I love to explore new
+            technologies and leverage them to solve real-life problems.
+          </span>
+        </div>
         <div className="flex flex-col items-center gap-3 md:flex-row ">
           <Link
             href={"/"}
