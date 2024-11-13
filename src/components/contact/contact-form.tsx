@@ -1,15 +1,72 @@
-"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { FormEvent } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Loader } from "lucide-react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const ContactForm = () => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
-  };
+const formSchema = z.object({
+  email: z.string().email(),
+  name: z.string().min(1, "Name is required"),
+  subject: z.string().min(1, "Subject is required"),
+  message: z
+    .string()
+    .min(1, "Please enter a message")
+    .max(1000, "Message is too long"),
+});
+
+type ContactFormProps = {
+  setSuccess: Dispatch<SetStateAction<boolean | null>>;
+};
+
+const ContactForm = ({ setSuccess }: ContactFormProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "Vignesh",
+      email: "vighneshgupta32@gmail.com",
+      subject: "Test",
+      message: "Testing the form",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+
+    const data = {
+      service_id: "default_service",
+      template_id: "template_cpwkieu",
+      user_id: process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+      template_params: values,
+    };
+
+    const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      setSuccess(true);
+    } else {
+      setSuccess(false);
+    }
+
+    setIsLoading(false);
+  }
 
   return (
     <div className="relative min-h-[565px] overflow-hidden rounded-2xl border-[1px] bg-muted/10 pb-3">
@@ -25,63 +82,103 @@ const ContactForm = () => {
         <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
       </div>
 
-      <form onSubmit={handleSubmit} className="mb-4 px-6">
-        <label htmlFor="email" className="my-4 flex items-center gap-2">
-          <span className="font-medium text-onyx dark:text-white">Email:</span>
-          <input
-            type="email"
-            className="flex-1 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
-            placeholder="Enter your email"
-            id="email"
-            name="email"
-          />
-        </label>
-
-        <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
-
-        <label htmlFor="name" className="my-4 flex items-center gap-2">
-          <span className="font-medium text-onyx dark:text-white">Name:</span>
-          <input
-            className="flex-1 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
-            placeholder="Enter your name"
-            id="name"
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mb-4 px-6">
+          <FormField
+            control={form.control}
             name="name"
+            render={({ field }) => (
+              <FormItem className="flex items-center space-y-0 my-4">
+                <FormLabel className="md:text-lg">Name:</FormLabel>
+                <FormControl className="flex">
+                  <input
+                    className="flex-1 ml-2 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
+                    placeholder="Enter your name"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage className="select-none" />
+              </FormItem>
+            )}
           />
-        </label>
 
-        <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
 
-        <label htmlFor="email" className="my-4 flex items-center gap-2">
-          <span className="font-medium text-onyx dark:text-white">
-            Subject:
-          </span>
-          <input
-            className="flex-1 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
-            placeholder="Enter subject"
-            id="subject"
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="flex items-center space-y-0 my-4">
+                <FormLabel className="md:text-lg">Email:</FormLabel>
+                <FormControl className="flex">
+                  <input
+                    className="flex-1 ml-2 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
+                    placeholder="Enter your email"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+
+          <FormField
+            control={form.control}
             name="subject"
+            render={({ field }) => (
+              <FormItem className="flex items-center space-y-0 my-4">
+                <FormLabel className="md:text-lg">Subject:</FormLabel>
+                <FormControl className="flex">
+                  <input
+                    className="flex-1 ml-2 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
+                    placeholder="Enter subject"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-        </label>
 
-        <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
+          <div className="h-[1px] w-full bg-black/10 dark:bg-white/10" />
 
-        <div className="my-4 flex flex-col">
-          <div className="relative">
-            <textarea
-              name="message"
-              placeholder="Write your message here"
-              className="min-h-[200px] md:min-h-[320px] w-full resize-none rounded-lg  bg-white/40 dark:bg-black/40 p-4 text-onyx dark:text-muted-foreground caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 border-[1px] border-muted/20"
-            />
-          </div>
-        </div>
-
-        <Button
-          className="ml-auto py-6 bg-gradient hover:bg-gradient primary-button dark:text-muted text-white dark:hover:text-white font-medium transition duration-300 w-full md:w-auto"
-          size="lg"
-        >
-          Send
-        </Button>
-      </form>
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem className="flex items-center space-y-0 my-4 relative">
+                <FormControl className="flex">
+                  <textarea
+                    placeholder="Write your message here"
+                    maxLength={1000}
+                    className="min-h-[200px] md:min-h-[320px] w-full resize-none rounded-lg  bg-white/40 dark:bg-black/40 p-4 text-onyx dark:text-muted-foreground caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 border-[1px] border-muted/20"
+                    {...field}
+                  />
+                </FormControl>
+                <div className="absolute right-2 bottom-2 text-muted text-sm flex">
+                  <FormMessage />
+                  <p>{field.value.length}/1000</p>
+                </div>
+              </FormItem>
+            )}
+          />
+          <Button
+            className="ml-auto py-6 bg-gradient hover:bg-gradient primary-button dark:text-muted text-white dark:hover:text-white font-medium transition duration-300 w-full md:w-auto"
+            size="lg"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader className="w-6 h-6 mr-2 animate-spin" /> Sending
+              </>
+            ) : (
+              "Send"
+            )}
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 };
