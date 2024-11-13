@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import Footer from "@/components/common/footer";
 import FooterGradient from "@/components/common/footer-gradient";
@@ -22,19 +21,17 @@ export default function RootLayout({
 }>) {
   return (
     <body className={`antialiased relative ${inter.className}`}>
-      <NuqsAdapter>
-        <HeaderGradient />
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <TooltipProvider>
-            <Header />
-            <ThemeSwitch className="fixed bottom-10 left-10 z-10" />
-            {children}
-            <Footer />
-          </TooltipProvider>
-        </ThemeProvider>
-        <FooterGradient />
-        <SanityLive />
-      </NuqsAdapter>
+      <HeaderGradient />
+      <ThemeProvider attribute="class" defaultTheme="dark">
+        <TooltipProvider>
+          <Header />
+          <ThemeSwitch className="fixed bottom-10 left-10 z-10" />
+          {children}
+          <Footer />
+        </TooltipProvider>
+      </ThemeProvider>
+      <FooterGradient />
+      <SanityLive />
     </body>
   );
 }

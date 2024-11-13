@@ -1,7 +1,4 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryState } from "nuqs";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -15,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Loader } from "lucide-react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -27,19 +24,20 @@ const formSchema = z.object({
     .max(1000, "Message is too long"),
 });
 
-const ContactForm = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setMessage] = useQueryState("success");
+type ContactFormProps = {
+  setSuccess: Dispatch<SetStateAction<boolean | null>>;
+};
 
+const ContactForm = ({ setSuccess }: ContactFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
+      name: "Vignesh",
+      email: "vighneshgupta32@gmail.com",
+      subject: "Test",
+      message: "Testing the form",
     },
   });
 
@@ -60,12 +58,11 @@ const ContactForm = () => {
       },
       body: JSON.stringify(data),
     });
-    console.log({ values, res });
 
     if (res.ok) {
-      setMessage("true");
+      setSuccess(true);
     } else {
-      setMessage("false");
+      setSuccess(false);
     }
 
     setIsLoading(false);
@@ -96,7 +93,7 @@ const ContactForm = () => {
                 <FormControl className="flex">
                   <input
                     className="flex-1 ml-2 text-onyx caret-fuchsia-400 placeholder:text-muted focus:outline-none focus:ring-0 dark:text-muted-foreground dark:placeholder:text-muted/50 bg-transparent"
-                    placeholder="Enter your email"
+                    placeholder="Enter your name"
                     {...field}
                   />
                 </FormControl>

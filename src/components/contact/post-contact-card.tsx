@@ -9,34 +9,33 @@ import {
 import { cn } from "@/lib/utils";
 
 type PostContactCardProps = {
-  success?: string;
+  success?: boolean;
 };
 
 const PostContactCard = ({ success }: PostContactCardProps) => {
-  const message =
-    success === "true"
-      ? {
-          Icon: MailCheckIcon,
-          title: "Message Sent!",
-          description:
-            "Thanks for taking the time to write me, I’ll reply to you as soon as possible.",
-          footer: "In the meantime, follow me on these platforms below",
-        }
-      : {
-          Icon: MailWarningIcon,
-          title: "Couldn't send message :(",
-          description:
-            "There was an error sending your message, please try again later.",
-          footer:
-            "Or, try reaching out using one of the following platforms instead",
-        };
+  const message = success
+    ? {
+        Icon: MailCheckIcon,
+        title: "Message Sent!",
+        description:
+          "Thanks for taking the time to write me, I’ll reply to you as soon as possible.",
+        footer: "In the meantime, follow me on these platforms below",
+      }
+    : {
+        Icon: MailWarningIcon,
+        title: "Couldn't send message :(",
+        description:
+          "There was an error sending your message, please try again later.",
+        footer:
+          "Or, try reaching out using one of the following platforms instead",
+      };
 
   return (
     <Card className="min-h-[565px] flex items-center justify-center bg-muted/20 dark:bg-card relative">
       <CardHeader className="flex items-center gap-2">
         <message.Icon
           className={cn("size-12 text-primary", {
-            "text-destructive": success === "false",
+            "text-destructive": !success 
           })}
         />
         <CardTitle className="text-base">{message.title}</CardTitle>
