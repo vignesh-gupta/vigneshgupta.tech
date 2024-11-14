@@ -22,8 +22,8 @@ const WorkPage = () => {
       />
       <PageContainer>
         <ProjectSection />
-        <Card className="w-full overflow-hidden lg:h-[500px] relative bg-card/50 border-4 border-dashed flex items-center justify-center flex-col">
-          <StarsIcon className="size-24 text-foreground" />
+        <Card className="w-full overflow-hidden lg:h-[500px] relative bg-card/50 border-4 border-dashed flex items-center justify-center flex-col p-5">
+          <StarsIcon className="md:size-24 size-12 text-foreground" />
           <CardTitle className="my-5">Want to see more?</CardTitle>
           <CardDescription className="text-muted/80">
             I have more projects on my{" "}

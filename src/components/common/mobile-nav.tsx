@@ -1,11 +1,18 @@
-import { navLinks, socials } from "@/lib/constants";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+import { navLinks, socials } from "@/lib/constants";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import Logo from "./logo";
 
 const MobileNav = () => {
   return (
-    <header className="fixed z-[999] md:hidden px-4 bottom-10 inset-x-0 block">
+    <motion.header
+      initial={{ translateY: 100 }}
+      animate={{ translateY: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed z-[999] md:hidden px-4 bottom-10 inset-x-0 block"
+    >
       <div className="container mx-auto flex h-16 w-full max-w-[1024px] items-center justify-between rounded-full border-[1px] border-white/25 bg-white/25 px-8 backdrop-blur-md dark:border-[#5E5E5E]/20 dark:bg-[#18181D]/30">
         <div className="flex items-center flex-1">
           <Link aria-label="Vignesh Gupta Logo" href="/">
@@ -49,7 +56,7 @@ const MobileNav = () => {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

@@ -15,21 +15,25 @@ const info: InfoCardsProps[] = [
     description: "Who am I? What do I do?",
     image: "/about.png",
     className: "pb-8",
+    href: "/about",
   },
   {
-    title: "Notebook",
+    title: "Blogs",
     description: "My thoughts and ideas",
     image: "/notebook.png",
+    href: "/notebook",
   },
   {
     title: "Bookshelf",
     description: "Books and pieces of wisdom I’ve enjoyed reading",
     image: "/bookshelf.png",
+    href: "/bookshelf",
   },
   {
     title: "Tech Stack",
     description: "The dev tools, apps, devices, and games I use and play.",
     image: "/stack.png",
+    href: "/uses",
   },
 ];
 

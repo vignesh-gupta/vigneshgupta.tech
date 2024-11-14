@@ -90,3 +90,19 @@ body {
 .bg-gradient {
   background: linear-gradient(180deg, #1a1a1a, #131313);
 }
+
+::-webkit-scrollbar {
+  @apply w-1.5
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-accent rounded-full
+}
+
+::-webkit-scrollbar-thumb {
+  @apply dark:bg-gray-400/30 bg-onyx/50 rounded-full
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c0a0b9;
+}
