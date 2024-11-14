@@ -59,13 +59,20 @@ const config: Config = {
       },
       keyframes: {
         "fade-in": {
-          from: {opacity: "0"},
-          to: {opacity: "1"},
+          from: { opacity: "0" },
+          to: { opacity: "1" },
         },
+        wave: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "20%, 60%": { transform: "rotate(-25deg)" },
+          "40%, 80%": { transform: "rotate(10deg)" },
+        },
+
       },
-			animation:{
-				"fade-in": "fade-in 0.5s ease-in-out",
-			}
+      animation: {
+        "fade-in": "fade-in 0.5s ease-in-out",
+        wave: "wave 0.5s infinite",
+      },
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports

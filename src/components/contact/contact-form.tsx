@@ -35,10 +35,10 @@ const ContactForm = ({ setSuccess }: ContactFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "Vignesh",
-      email: "vighneshgupta32@gmail.com",
-      subject: "Test",
-      message: "Testing the form",
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
     },
   });
 

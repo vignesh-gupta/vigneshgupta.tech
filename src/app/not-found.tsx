@@ -46,7 +46,7 @@ export default function Page404() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="/"
-              className="rounded-lg primary-button px-5 py-3 inline-flex items-center  text-lg font-medium text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+              className="rounded-lg primary-button px-5 py-3 inline-flex items-center text-lg font-medium"
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
               Go Home
