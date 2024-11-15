@@ -22,12 +22,14 @@ const info: InfoCardsProps[] = [
     description: "My thoughts and ideas",
     image: "/notebook.png",
     href: "/notebook",
+    isWorkInProgress: true,
   },
   {
     title: "Bookshelf",
     description: "Books and pieces of wisdom I’ve enjoyed reading",
     image: "/bookshelf.png",
     href: "/bookshelf",
+    isWorkInProgress: true,
   },
   {
     title: "Tech Stack",

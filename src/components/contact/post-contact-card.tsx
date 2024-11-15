@@ -1,4 +1,6 @@
+import { cn } from "@/lib/utils";
 import { MailCheckIcon, MailWarningIcon } from "lucide-react";
+import { useRef } from "react";
 import {
   Card,
   CardDescription,
@@ -6,13 +8,15 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { cn } from "@/lib/utils";
+import Confetti, { ConfettiRef } from "../ui/confetti";
 
 type PostContactCardProps = {
   success?: boolean;
 };
 
 const PostContactCard = ({ success }: PostContactCardProps) => {
+  const confettiRef = useRef<ConfettiRef>(null);
+
   const message = success
     ? {
         Icon: MailCheckIcon,
@@ -31,11 +35,11 @@ const PostContactCard = ({ success }: PostContactCardProps) => {
       };
 
   return (
-    <Card className="min-h-[565px] flex items-center justify-center bg-muted/20 dark:bg-card relative">
+    <Card className="min-h-[565px] flex items-center justify-center bg-muted/20 dark:bg-card relative overflow-visible">
       <CardHeader className="flex items-center gap-2">
         <message.Icon
           className={cn("size-12 text-primary", {
-            "text-destructive": !success 
+            "text-destructive": !success,
           })}
         />
         <CardTitle className="text-base">{message.title}</CardTitle>
@@ -43,6 +47,18 @@ const PostContactCard = ({ success }: PostContactCardProps) => {
           {message.description}
         </CardDescription>
       </CardHeader>
+
+      {success && (
+        <Confetti
+          ref={confettiRef}
+          className="absolute left-0 top-0 z-0 size-full"
+          onMouseEnter={() => {
+            confettiRef.current?.fire({
+              spread: 70,
+            });
+          }}
+        />
+      )}
 
       <CardFooter className="absolute bottom-0 left-0 right-0 p-4 flex justify-center flex-col gap-2 text-muted">
         <p className="text-xs">{message.footer}</p>

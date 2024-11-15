@@ -10,6 +10,7 @@ export type InfoCardsProps = {
   className?: string;
   size?: number;
   href: string;
+  isWorkInProgress?: boolean;
 };
 
 const InfoCards = ({
@@ -19,15 +20,21 @@ const InfoCards = ({
   className,
   size,
   href,
+  isWorkInProgress,
 }: InfoCardsProps) => {
   return (
     <Link href={href} prefetch={false}>
       <Card
         className={cn(
-          "w-full overflow-hidden  transition duration-300 pt-12 group flex items-center flex-col gap-y-2 aspect-square group",
+          "w-full overflow-hidden  transition duration-300 pt-12 group flex items-center flex-col gap-y-2 aspect-square group relative",
           className
         )}
       >
+        {isWorkInProgress && (
+          <div className="ribbon-wrapper">
+            <div className="ribbon">🚧 WIP</div>
+          </div>
+        )}
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
         <Image

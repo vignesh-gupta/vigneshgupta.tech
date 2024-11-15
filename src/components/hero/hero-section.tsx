@@ -11,9 +11,9 @@ const HeroSection = () => {
           <span className="text-lg font-semibold  md:text-xl lg:text-2xl text-muted">
             Hey there <span className="animate-wave">👋</span>!
           </span>
-          <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl text-muted">
-            I&apos;m <span className="text-primary">Vignesh Gupta</span>
-          </h1>
+          <div className="text-4xl font-bold md:text-5xl lg:text-6xl text-muted">
+            I&apos;m <h1 className="text-primary block sm:inline">Vignesh Gupta</h1>
+          </div>
         </div>
         <div className="text-lg md:text-xl text-muted text-pretty">
           <span>A Self-taught Developer, functioning in the industry for</span>
